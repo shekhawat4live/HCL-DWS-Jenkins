@@ -31,11 +31,7 @@ pipeline{
                 echo "Hello, ${PERSON}, nice to meet you."
             }
         }
-         stage('Reply to mail'){
-            always{
-                emailtext body: 'A test mail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
-            }
-            }
+         
 
         
         stage("Deployment into SIT Server."){
