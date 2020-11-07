@@ -26,16 +26,17 @@ pipeline{
                     string(name: 'PERSON', defaultValue: 'Approver', description: 'Who should I say hello to?')
                 }
             }
-            stage('Reply to mail'){
+           
+            steps {
+                echo "Hello, ${PERSON}, nice to meet you."
+            }
+        }
+         stage('Reply to mail'){
             always{
                 emailtext body: 'A test mail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
             }
             }
 
-            steps {
-                echo "Hello, ${PERSON}, nice to meet you."
-            }
-        }
         
         stage("Deployment into SIT Server."){
             steps{
