@@ -1,19 +1,36 @@
-pipeline {
-        agent {
-           label 'Agent_label'
-           }
-           stages {
-           stage("check out git projects"){
-                steps {
-                  sh '''
-                  git clone -b master --single-branch https://github.com/ANIRBANNANDY/Devops-hackathon ${BUILD_NUMBER}/codebase
-                  cd ${BUILD_NUMBER}/codebase 
-                   ls -ltra ${BUILD_NUMBER}/codebase
-                  
-                  '''
-                }
+pipeline{
+    agent any 
+    
+    stages{
+        stage("cloning repo"){
+            steps {
+                    git 'https://github.com/kallamvamsikrishnareddy/GeneralSpringBootProgExce'
                 
-           }
-           }
-       
+            }
+        }
+    
+        stage("Building source code using maven."){
+            steps{
+                script{
+                    sh "mvn clean install"
+                }
+            }
+        }
+        
+        
+        stage('Approval required for deployment') {
+            input {
+                message "Should we continue to Deploy on SIT/UAT environment,"
+                ok "Yes, we should."
+                submitter "alice,bob"
+                parameters {
+                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                }
+            }
 
+            steps {
+                echo "Hello, ${PERSON}, nice to meet you."
+            }
+        }
+    }
+}
