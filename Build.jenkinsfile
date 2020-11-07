@@ -26,8 +26,10 @@ pipeline{
                     string(name: 'PERSON', defaultValue: 'Approver', description: 'Who should I say hello to?')
                 }
             }
+            stage('Reply to mail'){
             always{
                 emailtext body: 'A test mail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+            }
             }
 
             steps {
