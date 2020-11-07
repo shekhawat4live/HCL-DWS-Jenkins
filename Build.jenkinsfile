@@ -35,7 +35,7 @@ pipeline{
         stage("Deployment into SIT Server."){
             steps{
                 script{
-                    sh 'rm -rf *'
+                    
                     sh 'cp /var/lib/jenkins/workspace/${ProjectName}/Build/target/*.jar /tmp/'
                 }
             }
