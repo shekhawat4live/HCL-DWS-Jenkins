@@ -4,7 +4,7 @@ pipeline{
     stages{
         stage("cloning repo"){
             steps {
-                    git clone ${GIT_URL}
+                    git '${GIT_URL}'
                 
             }
         }
