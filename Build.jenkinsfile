@@ -6,7 +6,7 @@ pipeline {
            stage("check out git projects"){
                 steps {
                   sh '''
-                  git clone -b {branch_name} --single-branch ${code base url} 
+                  git clone -b master --single-branch https://github.com/ANIRBANNANDY/Devops-hackathon 
                   
                   '''
                 }
