@@ -4,7 +4,7 @@ pipeline{
     stages{
         stage("cloning repo"){
             steps {
-                    git 'https://github.com/kallamvamsikrishnareddy/GeneralSpringBootProgExce'
+                    git clone ${GIT_URL}
                 
             }
         }
