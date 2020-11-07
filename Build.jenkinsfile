@@ -1,0 +1,17 @@
+pipeline {
+        agent {
+           label 'Agent_label'
+           }
+           stages {
+           stage("check out git projects"){
+                steps {
+                  sh '''
+                  git clone -b {branch_name} --single-branch ${code base url} 
+                  
+                  '''
+                }
+                
+           }
+           }
+       
+
