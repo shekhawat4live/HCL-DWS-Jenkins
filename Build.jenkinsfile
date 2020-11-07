@@ -36,7 +36,7 @@ pipeline{
             steps{
                 script{
                     sh 'rm -rf *'
-                    sh 'cp /var/lib/jenkins/workspace/DWS/Build/Build/target/*.jar /tmp/'
+                    sh 'cp /var/lib/jenkins/workspace/${ProjectName}/Build/Build/target/*.jar /tmp/'
                 }
             }
         }
