@@ -2,7 +2,7 @@ pipeline{
     agent any 
     
     stages{
-        stage("cloning repo"){
+        stage("Checkout the Source code"){
             steps {
                     git '${GIT_URL}'
                 
