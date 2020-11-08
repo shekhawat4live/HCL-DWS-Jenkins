@@ -2,6 +2,16 @@ pipeline{
     agent any 
     
     stages{
+     stage('Build Setup') {
+                steps {
+                     script {
+                            wrap([$class: 'Builduser']){
+                            currentBuild.displayName = "#${BUILD_NUMBER} - By ${BUILD_USER}"
+                            }
+                     }
+                }
+     
+    }
         stage("Checkout the Source code"){
             steps {
                     git '${GIT_URL}'
